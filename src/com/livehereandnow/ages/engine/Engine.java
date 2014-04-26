@@ -109,6 +109,8 @@ public class Engine {
 //        //        if (this.手上的牌.get(cardNum).get類型() == CardType.政府) {
 //        if (this.手上的牌.get(cardNum).get右上().equals("政府")) {
         
+        System.out.println("  === ver 0.43.1 ===  2014-4-26, 18:42, by Max　");
+        System.out.println("新增help專有名詞說明");
         System.out.println("  === ver 0.43 ===  2014-4-26, 16:42, by Max　");
         System.out.println("    1. 字元檢測不能使用if (this.手上的牌.get(cardNum).get類型() == CardType.政府)");
         System.out.println("    2. 要使用正確規格if (this.手上的牌.get(cardNum).get右上().equals(\"政府\"))");

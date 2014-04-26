@@ -132,9 +132,10 @@ public class Player {
     }
 
     public boolean doStartRound() throws AgesException {//ver 0.41
-        System.out.println("玩家的回合開始，補充內政和軍事點數");
+        System.out.println("玩家的回合開始，補充內政和軍事點數---從政府牌補充");
         getCivilCounter().setPoint(getCurrentGovernment().getWhitePoints().getPoints());
         getMilitaryCounter().setPoint(getCurrentGovernment().getRedPoints().getPoints());
+        System.out.println("玩家的回合開始，補充內政和軍事點數---除了政府牌以外，A領袖 漢模拉比 ，A奇蹟 金字塔 ，II特殊科技-內政，II特殊科技-內政，III特殊科技-內政");
 
         return true;
     }

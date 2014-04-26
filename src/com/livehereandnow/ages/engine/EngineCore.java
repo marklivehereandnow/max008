@@ -327,7 +327,11 @@ public class EngineCore {
         System.out.println("   status       to show current game status");
         System.out.println("   version      顯示版本變更歷史");
         System.out.println("  TODO         代辦事項");
-        System.out.println("=== basic commands === (end)");
+        System.out.println("=== term === (start)");
+        System.out.println("[current events]=[當前事件]，中文版說明書有錯誤");
+        System.out.println("[future events]=[未來事件]");
+        System.out.println("[military deck]=[軍事牌組]");
+        System.out.println("[civil deck]=[內政牌組]");
         return true;
     }
 
