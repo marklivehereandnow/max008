@@ -17,10 +17,39 @@ public class Cards implements CardType {
 
     List<Card> cards;
     List<Card> initCards;
-    Card initGovernment;
+    Card init政府;
+    Card init實驗室;
+    Card init神廟;
+    Card init農場;
+    Card init礦山;
+    Card init步兵;
+
+    public Card getInit政府() {
+        return init政府;
+    }
+
+    public Card getInit實驗室() {
+        return init實驗室;
+    }
+
+    public Card getInit神廟() {
+        return init神廟;
+    }
+
+    public Card getInit農場() {
+        return init農場;
+    }
+
+    public Card getInit礦山() {
+        return init礦山;
+    }
+
+    public Card getInit步兵() {
+        return init步兵;
+    }
 
     public Card getInitGovernment() {
-        return initGovernment;
+        return init政府;
     }
 
     public List<Card> copyInitCards() {
@@ -100,17 +129,23 @@ public class Cards implements CardType {
         // 1. Player's Initial Cards
         //
 
-//        initGovernment = new Card("Despotism", 0, "???");
-//        initGovernment.getWhitePoints().setPoints(4);
-//        initGovernment.getRedPoints().setPoints(2);
+//        init政府 = new Card("Despotism", 0, "???");
+//        init政府.getWhitePoints().setPoints(4);
+//        init政府.getRedPoints().setPoints(2);
         //
         // 1.1 Goverment card
         //
-        initGovernment = new Card(10, "專制", 0, 內政, 科技, 橙色, "政府", "內政點數+4，軍事點數+2", "0");
+        init政府 = new Card(10, "專制", 0, 內政, 科技, 橙色, "政府", "內政點數+4，軍事點數+2", "0");
+
         System.out.println("   initial Govt card, done");
         //
         // 1.2 Other 5 cards
         //
+        Card init實驗室 = new Card(13, "哲學", 0, 內政, 科技, 灰色, "實驗室", "科技生產+1", "3");
+        Card init神廟 = new Card(11, "宗教", 0, 內政, 科技, 灰色, "神廟", "笑臉+1，文化生產+1", "3");
+        Card init農場 = new Card(12, "農業", 0, 內政, 科技, 棕色, "農場", "食物生產+1", "2");
+        Card init礦山 = new Card(15, "青銅", 0, 內政, 科技, 棕色, "礦山", "資源生產+1", "2");
+        Card init步兵 = new Card(14, "戰士", 0, 內政, 科技, 紅色, "步兵", "軍力+1", "2");
         initCards = new ArrayList<>();
 //        Card card1 = new Card("Philosophy", 0, "實驗室");//神廟
 //        Card card2 = new Card("Religion", 0, "神廟");//
@@ -129,6 +164,8 @@ public class Cards implements CardType {
         initCards.add(new Card(12, "農業", 0, 內政, 科技, 棕色, "農場", "食物生產+1", "2"));
         initCards.add(new Card(15, "青銅", 0, 內政, 科技, 棕色, "礦山", "資源生產+1", "2"));
         initCards.add(new Card(14, "戰士", 0, 內政, 科技, 紅色, "步兵", "軍力+1", "2"));
+
+         //Card init政府=
         System.out.println("   initial 5 cards,哲學/宗教/農業/青銅/戰士 , done");
 
         //

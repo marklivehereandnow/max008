@@ -278,6 +278,13 @@ public class Card implements CardType {
         return "[" + 卡名 + "]";
     }
 
+    /**
+     * FOR-MAX
+     * @param k <br>
+     * 5=>[I-灌溉-科技-農場-建造成本:3/3] <br>
+     * 6=>[A-Philosophy--實驗室  黃點:0 藍點:0]
+     * @return 
+     */
     public String toString(int k) {
         switch (k) {
             case 1://

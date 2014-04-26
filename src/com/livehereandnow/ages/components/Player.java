@@ -7,6 +7,11 @@
  */
 package com.livehereandnow.ages.components;
 
+import static com.livehereandnow.ages.components.CardType.內政;
+import static com.livehereandnow.ages.components.CardType.棕色;
+import static com.livehereandnow.ages.components.CardType.灰色;
+import static com.livehereandnow.ages.components.CardType.科技;
+import static com.livehereandnow.ages.components.CardType.紅色;
 import com.livehereandnow.ages.exception.AgesException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +22,15 @@ import java.util.List;
  */
 public class Player {
 
+    private Cards cards;
     private Counter civilCounter;
     private Counter militaryCounter;
+
+    private Card[] ages實驗室;
+    private Card[] ages神廟;
+    private Card[] ages農場;
+    private Card[] ages礦山;
+    private Card[] ages步兵;
 
     public Counter getCivilCounter() {
         return civilCounter;
@@ -564,6 +576,17 @@ public class Player {
 
     //起始設定
     public Player() {
+        ages實驗室 = new Card[4];
+        ages神廟 = new Card[4];
+        ages農場 = new Card[4];
+        ages礦山 = new Card[4];
+        ages步兵 = new Card[4];
+
+        ages實驗室[0] = new Card(13, "哲學", 0, 內政, 科技, 灰色, "實驗室", "科技生產+1", "3");
+        ages神廟[0] = new Card(11, "宗教", 0, 內政, 科技, 灰色, "神廟", "笑臉+1，文化生產+1", "3");
+        ages農場[0] = new Card(12, "農業", 0, 內政, 科技, 棕色, "農場", "食物生產+1", "2");
+        ages礦山[0] = new Card(15, "青銅", 0, 內政, 科技, 棕色, "礦山", "資源生產+1", "2");
+        ages步兵[0] = new Card(14, "戰士", 0, 內政, 科技, 紅色, "步兵", "軍力+1", "2");
         civilCounter = new Counter();
         militaryCounter = new Counter();
         失敗原因 = "";
@@ -712,32 +735,63 @@ public class Player {
     }
 
     public boolean doPlayCard(int cardNum) throws AgesException {
-//         Card card=new Card();
-//         card=this.get手上的牌().get(cardNum);
+        //
+        // 
+        //
         if ((cardNum + 1) > this.get手上的牌().size()) {
             System.out.println("... index of cards-on-hand should be from 0 to " + (this.get手上的牌().size() - 1));
 
             return false;
         }
 
-        this.get桌上的牌().add(this.get手上的牌().get(cardNum));
+        //
+        //
+        //
+        Card card = this.get手上的牌().get(cardNum);
 
+        //this.get桌上的牌().add(this.get手上的牌().get(cardNum));
         System.out.println("這張牌的類型是" + this.get手上的牌().get(cardNum).get類型());
         //        當打出科技牌的時候
 //        灌溉為例
         System.out.println("右上=" + this.get手上的牌().get(cardNum).get右上());
+
         if (this.get手上的牌().get(cardNum).get類型() == CardType.科技) {
 //            System.out.println("123");
             switch (this.get手上的牌().get(cardNum).get右上()) {
-                case "農場": {
-                    System.out.println("準備設定已打出");
-                    this.農場[this.get手上的牌().get(cardNum).get時代()].set打出(true);
-                    System.out.println("打出了嗎?" + this.農場[this.get手上的牌().get(cardNum).get時代()].is打出());
-                }
-                break;
+//                case "農場": {
+//                    System.out.println("準備設定已打出");
+//                    this.農場[this.get手上的牌().get(cardNum).get時代()].set打出(true);
+//                    System.out.println("打出了嗎?" + this.農場[this.get手上的牌().get(cardNum).get時代()].is打出());
+//                }
+
+                // ver 0.44 農場 [A-農業--農場  黃點:0 藍點:0] 
+                case "實驗室":
+                    ages實驗室[card.get時代()] = card;
+                    break;
+                case "神廟":
+                    ages神廟[card.get時代()] = card;
+                    break;
+                case "農場":
+                    ages農場[card.get時代()] = card;
+                    break;
+                case "礦山":
+                    ages農場[card.get時代()] = card;
+                    break;
+                case "步兵":
+                    ages農場[card.get時代()] = card;
+                    break;
+                    
+                    
+                    
+                default:
+                    System.out.println("DEBUG...CardType.科技??? "+card.toString(6));
             }
 
         } else {
+            //
+            // eventually we will find proper location for different types of cards
+            //
+            this.get桌上的牌().add(this.get手上的牌().get(cardNum));
 
         }
         this.get手上的牌().remove(cardNum);
@@ -754,13 +808,13 @@ public class Player {
      * @throws AgesException
      */
     public boolean doPlayCard(int cardNum, int type) throws AgesException {
-        Card card=this.手上的牌.get(cardNum);    
+        Card card = this.手上的牌.get(cardNum);
         System.out.println("DOING...打政府牌" + card);
         System.out.println("DOING...打政府牌" + card.get右上());
-        
+
 //        if (this.手上的牌.get(cardNum).get類型() == CardType.政府) {
         if (this.手上的牌.get(cardNum).get右上().equals("政府")) {
-        
+
             if (type == 0) {
                 System.out.println("和平方式");
             }
@@ -854,12 +908,41 @@ public class Player {
         getCivilCounter().payPoint(cost);
         return true;
     }
+//
+//    public void showAgesX5() {
+//        for (int k = 0; k < 4; k++) {
+//            try {
+//                System.out.print(" " + ages農場[k].toString(7));
+//            } catch (Exception e) {
+//
+//            }
+//        }
+//    }
+
+    public void showAgesX5() {
+        showAgesX5("  實驗室", ages實驗室);
+        showAgesX5("  神廟", ages神廟);
+        showAgesX5("  農場", ages農場);
+        showAgesX5("  礦山", ages礦山);
+        showAgesX5("  步兵", ages步兵);
+
+    }
+
+    public void showAgesX5(String title, Card[] ages) {
+        System.out.print("  " + title);
+        for (int k = 0; k < 4; k++) {
+            try {
+                System.out.print(" " + ages[k].toString(6));
+            } catch (Exception e) {
+            }
+        }
+        System.out.println("  ");
+
+    }
 
     public void showStatus() {
-//        System.out.print("\n   內政點數=" + get內政點數());
         System.out.println("   內政點數=" + getCivilCounter().getPoint());
         System.out.println("   軍事點數=" + getMilitaryCounter().getPoint());
-
         showCards();
         System.out.println("\n   " + get點數());
         show農場礦山實驗室神廟步兵();
@@ -906,7 +989,8 @@ public class Player {
     public void showCards() {
         System.out.println("--------------------------");
         showGovernmentCard();
-        showInitCards();
+//        showInitCards();
+        showAgesX5();
         System.out.println("--------------------------");
 
         System.out.print("\n   手牌 ");
