@@ -101,13 +101,13 @@ public class Engine {
     public boolean doVersion() {
 
         System.out.println();
-        System.out.println("    ###Warning### String == IS NOT RIGHT");
-//   public boolean doStartRound() throws AgesException {//ver 0.41
-//        System.out.println("玩家的回合開始，補充內政和軍事點數");
-//        
-//        
-//        //        if (this.手上的牌.get(cardNum).get類型() == CardType.政府) {
-//        if (this.手上的牌.get(cardNum).get右上().equals("政府")) {
+        
+        System.out.println("  === ver 0.44 ===  2014-4-27, 7:36, by Mark　");
+        System.out.println("    1.introduce Card[] ages實驗室,神廟,農場,礦山,步兵 to meet Max's Agriculture's idea");
+        System.out.println("    2.for known type (實驗室,神廟,農場,礦山,步兵) card will go to proper player's card columns");
+        System.out.println("    3.** showAgesX5(String title, Card[] ages) **");
+        System.out.println();
+         
         
         System.out.println("  === ver 0.43.1 ===  2014-4-26, 18:42, by Max　");
         System.out.println("新增help專有名詞說明");
