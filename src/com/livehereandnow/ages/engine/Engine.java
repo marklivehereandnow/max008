@@ -82,6 +82,21 @@ public class Engine {
                 return false;
         }
     }
+    public boolean doCmd(String keyword, int parameter,int parameter2) throws IOException, AgesException {
+        switch (keyword) {
+            case "打":
+            case "out":
+            case "play":
+            case "play-card":
+            case "out-card":
+                return core.doPlayCard(parameter,parameter2);
+
+                
+            default:
+                System.out.println("Unknown keyword, " + keyword);
+                return false;
+        }
+    }
 
     public boolean doVersion() {
 
@@ -90,6 +105,20 @@ public class Engine {
 //   public boolean doStartRound() throws AgesException {//ver 0.41
 //        System.out.println("玩家的回合開始，補充內政和軍事點數");
 //        
+//        
+//        //        if (this.手上的牌.get(cardNum).get類型() == CardType.政府) {
+//        if (this.手上的牌.get(cardNum).get右上().equals("政府")) {
+        
+        System.out.println("  === ver 0.43 ===  2014-4-26, 16:42, by Max　");
+        System.out.println("    1. 字元檢測不能使用if (this.手上的牌.get(cardNum).get類型() == CardType.政府)");
+        System.out.println("    2. 要使用正確規格if (this.手上的牌.get(cardNum).get右上().equals(\"政府\"))");
+        
+        
+        System.out.println("  === ver 0.42 ===  2014-4-26, 15:32, by Max　");
+        System.out.println("    1. 在help內增加Revolution");
+        System.out.println("    2. 在help內增加change-government");
+        System.out.println("    3. 模仿Revolution的方式讓change-government能夠運行 估計5分鐘");
+        System.out.println("    4. 增加out x y x=手上牌的索引值，y=0代表和平 y=1代表革命");
         
         System.out.println("  === ver 0.41 ===  2014-4-26, 15:32, by Max　");
         System.out.println("    1. 補充內政和軍事點數改為由Player控制");

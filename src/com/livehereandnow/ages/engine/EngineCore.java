@@ -259,6 +259,11 @@ public class EngineCore {
 
         return true;
     }
+    public boolean doPlayCard(int k,int k2) throws AgesException {
+        get當前玩家().doPlayCard(k,k2);
+
+        return true;
+    }
 
     /**
      * 1. take card
@@ -315,6 +320,8 @@ public class EngineCore {
     public boolean doHelp() {
         System.out.println("\n=== basic commands === (start)");
         System.out.println("   help         this command");
+         System.out.println("             revolution 革命!");
+          System.out.println("             change-government 和平轉移政權");
         System.out.println("   take-card X  take number X card, X is 0 base");
         System.out.println("   change-turn  change player's turn");
         System.out.println("   status       to show current game status");

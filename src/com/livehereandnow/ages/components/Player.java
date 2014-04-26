@@ -89,7 +89,29 @@ public class Player {
         return k;
     }
 
+    public boolean doGovernment() throws AgesException {
+        System.out.println("99996647221245()");
+        System.out.println("DOING... Player.doRevolution()");
+        System.out.println("1. Do I have Govt card on hand?");
+        if (isAnyGovernmentCardOnHand()) {
+            System.out.println("   Yes, I have.");
+            System.out.println("2. What is the card number on hand?");
+            int cardIndex = getIndexOfGovernmentCardOnHand();
+            System.out.println("The index is " + cardIndex);
+            Card newGovt = 手上的牌.get(cardIndex);
+            System.out.println("3. Now, to replace the Govt with " + newGovt);
+            this.government = newGovt;
+            System.out.println("*** NOT TO ALLOW MORE THAN ONE GOVT CARD ON HAND ??? *** ");
+
+            return true;
+        } else {
+            System.out.println("   No, I don't.");
+            return false;
+        }
+    }
+
     public boolean doRevolution() throws AgesException {
+        System.out.println("99996647221245()");
         System.out.println("DOING... Player.doRevolution()");
         System.out.println("1. Do I have Govt card on hand?");
         if (isAnyGovernmentCardOnHand()) {
@@ -118,8 +140,26 @@ public class Player {
     }
 
     public boolean doChangeGovernment() throws AgesException {
-        System.out.println("DOING... Player.doChangeGovernment()");
-        return true;
+        System.out.println("DOING... Player.doChangeGovernment()和平轉移政權");
+        System.out.println("99996647221245()");
+        System.out.println("DOING... Player.doRevolution()");
+        System.out.println("1. Do I have Govt card on hand?我有沒有政府牌在手上");
+        if (isAnyGovernmentCardOnHand()) {
+            System.out.println("   Yes, I have.");
+            System.out.println("2. What is the card number on hand?");
+            int cardIndex = getIndexOfGovernmentCardOnHand();
+            System.out.println("The index is " + cardIndex);
+            Card newGovt = 手上的牌.get(cardIndex);
+            System.out.println("3. Now, to replace the Govt with " + newGovt);
+            this.government = newGovt;
+            System.out.println("*** NOT TO ALLOW MORE THAN ONE GOVT CARD ON HAND ??? *** ");
+
+            return true;
+        } else {
+            System.out.println("   No, I don't.");
+            return false;
+        }
+//        return true;
     }
 
     public boolean doConstructWonder() throws AgesException {
@@ -700,6 +740,35 @@ public class Player {
 
         }
         this.get手上的牌().remove(cardNum);
+
+        return true;
+    }
+
+    /**
+     * 三個字的指令率先實施打政府牌
+     *
+     * @param cardNum
+     * @param type 0=和平 1=革命
+     * @return
+     * @throws AgesException
+     */
+    public boolean doPlayCard(int cardNum, int type) throws AgesException {
+        Card card=this.手上的牌.get(cardNum);    
+        System.out.println("DOING...打政府牌" + card);
+        System.out.println("DOING...打政府牌" + card.get右上());
+        
+//        if (this.手上的牌.get(cardNum).get類型() == CardType.政府) {
+        if (this.手上的牌.get(cardNum).get右上().equals("政府")) {
+        
+            if (type == 0) {
+                System.out.println("和平方式");
+            }
+            if (type == 1) {
+                System.out.println("革命方式");
+            }
+        } else {
+            System.out.println("這個指令只支援政府牌使用");
+        }
 
         return true;
     }

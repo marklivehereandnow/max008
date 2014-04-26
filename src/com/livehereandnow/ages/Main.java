@@ -13,7 +13,6 @@ public class Main {
 
     private Engine engine;
     Engine engineXXX;
-    
 
     public Main() throws AgesException {
         engine = new Engine();
@@ -47,7 +46,7 @@ public class Main {
         int tokenCnt = 0;//命令行裡共有幾個字，給予初值為0
         String keyword = "";//指令是什麼，給予初值空字符串
         int parameter = -1;//指令的參數是什麼，給予初值為-1，-1通常是指不能用的值
-
+        int parameter2 = -1;
         //
         // 2. parser to words 
         //
@@ -81,6 +80,16 @@ public class Main {
                 return false;
             }
             return engine.doCmd(keyword, parameter);
+        }
+        if (tokenCnt == 3) {//如果輸入的是2個字的話
+            try {
+                parameter = Integer.parseInt(tokens.get(1));
+                parameter2 = Integer.parseInt(tokens.get(2));
+            } catch (Exception ex) {
+                System.out.println("Parameter must be integer!");
+                return false;
+            }
+            return engine.doCmd(keyword, parameter,parameter2);
         }
 
         //
