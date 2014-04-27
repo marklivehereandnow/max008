@@ -21,6 +21,7 @@ public class Engine {
 
     public Engine() throws AgesException {
         core = new EngineCore();
+        
     }
 
 //    public EngineCore getCore() {
@@ -101,6 +102,9 @@ public class Engine {
     public boolean doVersion() {
 
         System.out.println();
+        System.out.println("  === ver 0.45 ===  2014-4-27, 21:50, by Mark　");
+        System.out.println("    1.****** introduce PlayerTable");
+        System.out.println("    2.****** provide method public void add黃點(int type, int age, int point)");
         
         System.out.println("  === ver 0.44 ===  2014-4-27, 7:36, by Mark　");
         System.out.println("    1.introduce Card[] ages實驗室,神廟,農場,礦山,步兵 to meet Max's Agriculture's idea");
